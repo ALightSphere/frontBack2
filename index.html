@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Взять.ру — Аренда вещей без головной боли</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3273dc;
+            --accent-color: #48c78e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            background: white;
+        }
+        
+        /* Hero с асимметричным дизайном */
+        .hero-custom {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        
+        .hero-custom::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(-15deg);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* Pinterest-style masonry сетка */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .masonry-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        /* Разные размеры для категорий */
+        .masonry-item.size-large {
+            grid-row: span 2;
+        }
+        
+        .category-image {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+        }
+        
+        .category-image.size-small { min-height: 200px; }
+        .category-image.size-medium { min-height: 280px; }
+        .category-image.size-large { min-height: 380px; }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+        }
+        
+        .category-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-desc {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin-bottom: 0.75rem;
+        }
+        
+        .category-price {
+            display: inline-block;
+            background: white;
+            color: #333;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Цвета для категорий */
+        .cat-tools { background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); }
+        .cat-travel { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .cat-tech { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .cat-clothes { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
+        .cat-auto { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .cat-games { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        
+        /* Преимущества - карточный стиль */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+        
+        .benefit-text {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* Как работает - сетка */
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+        
+        .step-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 3rem 1.5rem 2rem;
+        }
+        
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            transition: color 0.2s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-white" role="navigation" aria-label="главная навигация">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon-text">
+                        <span class="icon has-text-primary">
+                            <i class="fas fa-box-open"></i>
+                        </span>
+                        <span class="has-text-weight-bold">Взять.ру</span>
+                    </span>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="меню" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-active" href="index.html">Главная</a>
+                    <a class="navbar-item" href="catalog.html">Каталог</a>
+                    <a class="navbar-item" href="faq.html">Вопросы</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+                
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary is-light">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <span>Найти вещь</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-custom">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Арендуй вещи.<br>
+                Экономь деньги.
+            </h1>
+            <p class="hero-subtitle">
+                Зачем покупать дрель, которая понадобится один раз? <br>
+                Бери в аренду за 999₽ в день и не захламляй квартиру
+            </p>
+            <div class="buttons">
+                <a href="catalog.html" class="button is-white is-medium is-rounded">
+                    <span class="icon">
+                        <i class="fas fa-th"></i>
+                    </span>
+                    <span>Открыть каталог</span>
+                </a>
+                <a href="faq.html" class="button is-light is-medium is-rounded">
+                    <span>Как это работает</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Товаров в каталоге</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2000+</span>
+                    <span class="stat-label">Довольных клиентов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Поддержка клиентов</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title has-text-centered">Что можно взять в аренду</h2>
+            <p class="section-subtitle has-text-centered">От инструментов до игровых консолей</p>
+            
+            <div class="masonry-grid">
+                <div class="masonry-item">
+                    <div class="category-image size-large cat-tools">
+                        <i class="fas fa-tools"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Инструменты</div>
+                            <div class="category-desc">Дрели, перфораторы, шуруповёрты для ремонта</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-medium cat-tech">
+                        <i class="fas fa-camera"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Техника</div>
+                            <div class="category-desc">Фотоаппараты, проекторы, звук</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-small cat-clothes">
+                        <i class="fas fa-tshirt"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Костюмы</div>
+                            <div class="category-desc">Для вечеринок и мероприятий</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-medium cat-travel">
+                        <i class="fas fa-campground"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Туризм</div>
+                            <div class="category-desc">Палатки, спальники, рюкзаки</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-small cat-auto">
+                        <i class="fas fa-car"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Авто</div>
+                            <div class="category-desc">Багажники, автопылесосы</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-small cat-games">
+                        <i class="fas fa-gamepad"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Развлечения</div>
+                            <div class="category-desc">PlayStation, настолки, игрушки</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-medium" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Спорт</div>
+                            <div class="category-desc">Велосипеды, ролики, тренажёры</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-small" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Для дома</div>
+                            <div class="category-desc">Пылесосы, утюги, мебель</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="masonry-item">
+                    <div class="category-image size-small" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                        <i class="fas fa-book"></i>
+                        <div class="category-overlay">
+                            <div class="category-name">Обучение</div>
+                            <div class="category-desc">Учебники, планшеты, курсы</div>
+                            <span class="category-price">999₽/день</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title has-text-centered">Почему арендовать выгоднее</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="benefit-title">Экономия денег</h3>
+                    <p class="benefit-text">
+                        Дрель за 8000₽ или аренда за 999₽ на один день? Выбор очевиден
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="benefit-title">Меньше хлама</h3>
+                    <p class="benefit-text">
+                        Не храни вещи, которые нужны раз в год. Освободи место в квартире
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Страховка</h3>
+                    <p class="benefit-text">
+                        Все вещи застрахованы. Если что-то сломается — это не твоя проблема
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="benefit-title">Быстро</h3>
+                    <p class="benefit-text">
+                        Забронировал онлайн, забрал в пункте выдачи. Без очередей в магазине
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="benefit-title">Экологично</h3>
+                    <p class="benefit-text">
+                        Одна вещь на десятерых вместо десяти новых вещей на свалке
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="benefit-title">Качество</h3>
+                    <p class="benefit-text">
+                        Все вещи проверены и исправны. Рейтинг каждого владельца виден всем
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title has-text-centered">Как это работает</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Найди нужную вещь</h3>
+                    <p class="step-desc">
+                        Используй поиск или фильтры по категориям. Посмотри фото, описание и отзывы других людей
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Забронируй на нужные даты</h3>
+                    <p class="step-desc">
+                        Выбери удобный период аренды. Оплати онлайн или наличными при получении
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Забери и пользуйся</h3>
+                    <p class="step-desc">
+                        Приезжай в пункт выдачи или закажи доставку. Проверь вещь перед использованием
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Верни после использования</h3>
+                    <p class="step-desc">
+                        В оговоренное время вернись в пункт выдачи. Оставь отзыв о владельце
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container has-text-centered">
+            <h2 class="title is-2 has-text-white">Готов попробовать?</h2>
+            <p class="subtitle has-text-white" style="margin-bottom: 2rem;">
+                Присоединяйся к тысячам людей, которые уже экономят деньги
+            </p>
+            <a href="catalog.html" class="button is-white is-medium is-rounded">
+                <span class="icon">
+                    <i class="fas fa-th"></i>
+                </span>
+                <span>Открыть каталог</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <p class="has-text-weight-bold is-size-4 mb-3" style="color: white;">Взять.ру</p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                        Аренда вещей без головной боли
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        Москва, Каширское шоссе, 61, корп. 2<br>
+                        <span style="margin-left: 1.5rem;">ТЦ «Каширское»</span>
+                    </p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Навигация</p>
+                    <p><a href="index.html" style="color: rgba(255,255,255,0.8);">Главная</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Каталог</a></p>
+                    <p><a href="faq.html" style="color: rgba(255,255,255,0.8);">Вопросы</a></p>
+                    <p><a href="contacts.html" style="color: rgba(255,255,255,0.8);">Контакты</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Категории</p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Инструменты</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Туризм</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Техника</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Развлечения</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Соцсети</p>
+                    <div class="buttons">
+                        <a href="https://vk.com" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-vk"></i>
+                            </span>
+                        </a>
+                        <a href="https://telegram.org" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-telegram"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr style="background-color: rgba(255,255,255,0.1);">
+            
+            <div class="content has-text-centered" style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                <p>© 2026 Взять.ру — Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        });
+    </script>
+</body>
+</html>

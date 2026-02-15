@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Частые вопросы — Взять.ру</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 1.5rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: white;
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+        
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background: #fafafa;
+        }
+        
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1.25rem;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .footer {
+            background-color: #f5f5f5;
+            padding: 2rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-white" role="navigation" aria-label="главная навигация">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon-text">
+                        <span class="icon has-text-primary">
+                            <i class="fas fa-box-open"></i>
+                        </span>
+                        <span class="has-text-weight-bold">Взять.ру</span>
+                    </span>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="меню" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="catalog.html">Каталог</a>
+                    <a class="navbar-item is-active" href="faq.html">Вопросы</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+                
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary is-light">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <span>Найти вещь</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container has-text-centered">
+            <h1 class="title is-1 has-text-white">Частые вопросы</h1>
+            <p class="subtitle has-text-white">
+                Собрали ответы на самые популярные вопросы про аренду
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Как забронировать вещь?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Всё просто: найди нужную вещь через поиск или каталог, выбери даты аренды и нажми «Забронировать». Мы отправим тебе подтверждение на email, а владелец свяжется для уточнения деталей встречи. Оплатить можно онлайн картой или наличными при получении вещи.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Что если вещь сломается?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Все вещи на платформе застрахованы. Если произошла поломка не по твоей вине (износ, заводской брак), владелец не может требовать компенсацию. Если поломка случилась из-за неправильного использования или небрежности, сработает страховка — ты заплатишь франшизу (обычно 10-15% от стоимости вещи), остальное покроет страховая.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Можно ли продлить аренду?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, если вещь свободна в эти даты. Напиши владельцу в чате и договоритесь о продлении. Доплатить можно там же, через платформу. Важно согласовать продление до окончания текущей аренды, иначе владелец может посчитать, что вещь просрочена.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Нужен ли залог?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Зависит от вещи. Для недорогих вещей (до 5000₽) залог обычно не нужен. Для дорогой техники, инструментов или спортинвентаря владелец может попросить залог — обычно 20-30% от стоимости новой вещи. Залог возвращается полностью после того, как владелец проверит вещь при возврате.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Как происходит встреча с владельцем?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>После бронирования вы договариваетесь о месте встречи: у владельца, у тебя, или на нейтральной территории (например, у метро). Владелец покажет, как пользоваться вещью, передаст инструкцию. При получении проверь, что всё работает и нет видимых повреждений. При возврате владелец тоже всё проверит. Обычно встреча занимает 5-10 минут.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Есть ли доставка?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Некоторые владельцы предлагают доставку за дополнительную плату — это указано в карточке вещи. Обычно доставка стоит 300-500₽ по городу. Также можно воспользоваться курьерскими службами самостоятельно, но тогда ответственность за сохранность при транспортировке на тебе.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Что делать, если владелец не выходит на связь?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Сначала попробуй написать в чат на платформе и позвонить (номер появится после подтверждения брони). Если владелец не отвечает в течение 24 часов, обратись в поддержку — мы свяжемся с ним сами или предложим альтернативную вещь. Если встреча сорвалась по вине владельца, деньги вернутся полностью.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Можно ли отменить бронь?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, но условия зависят от времени отмены. Если отменяешь за 48 часов до начала аренды — возврат 100%. За 24-48 часов — возврат 50%. Менее чем за 24 часа — деньги не возвращаются (владелец уже подготовил вещь и отказался от других арендаторов). Отменить можно в личном кабинете.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Как проверяется надёжность владельцев?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Каждый владелец проходит верификацию: подтверждение телефона, email и паспортных данных. После каждой аренды арендаторы оставляют отзывы — видишь рейтинг и комментарии других людей. Если у владельца низкий рейтинг или есть жалобы, мы можем заблокировать его аккаунт. Выбирай владельцев с рейтингом от 4.5 звёзд.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3 class="title is-5 mb-0">Какие документы нужны для аренды?</h3>
+                        <span class="icon faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для простых вещей обычно ничего не нужно, кроме подтверждённого аккаунта. Для дорогой техники владелец может попросить показать паспорт при встрече — это нормально, он хочет убедиться, что вещь в надёжных руках. Копии делать не обязательно, просто покажи документ.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #fafafa;">
+        <div class="container has-text-centered">
+            <h2 class="title is-3">Не нашли ответ на свой вопрос?</h2>
+            <p class="subtitle">Напишите нам — ответим в течение часа</p>
+            <a href="contacts.html" class="button is-primary is-medium">
+                <span class="icon">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span>Связаться с нами</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer" style="background-color: #1e293b; color: white; padding: 3rem 1.5rem 2rem;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <p class="has-text-weight-bold is-size-4 mb-3" style="color: white;">Взять.ру</p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                        Аренда вещей без головной боли
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        Москва, Каширское шоссе, 61, корп. 2<br>
+                        <span style="margin-left: 1.5rem;">ТЦ «Каширское»</span>
+                    </p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Навигация</p>
+                    <p><a href="index.html" style="color: rgba(255,255,255,0.8);">Главная</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Каталог</a></p>
+                    <p><a href="faq.html" style="color: rgba(255,255,255,0.8);">Вопросы</a></p>
+                    <p><a href="contacts.html" style="color: rgba(255,255,255,0.8);">Контакты</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Категории</p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Инструменты</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Туризм</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Техника</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Развлечения</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Соцсети</p>
+                    <div class="buttons">
+                        <a href="https://vk.com" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-vk"></i>
+                            </span>
+                        </a>
+                        <a href="https://telegram.org" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-telegram"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr style="background-color: rgba(255,255,255,0.1);">
+            
+            <div class="content has-text-centered" style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                <p>© 2026 Взять.ру — Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        });
+
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            const allIcons = document.querySelectorAll('.faq-icon');
+            
+            allAnswers.forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            allIcons.forEach(item => {
+                if (item !== icon) {
+                    item.classList.remove('rotated');
+                }
+            });
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('rotated');
+        }
+    </script>
+</body>
+</html>

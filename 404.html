@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Страница не найдена</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .error-number {
+            font-size: 10rem;
+            font-weight: bold;
+            color: white;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .box-icon {
+            font-size: 4rem;
+            color: rgba(255,255,255,0.3);
+            margin: 2rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .suggestions {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .suggestion-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .suggestion-item:hover {
+            background: #f9fafb;
+        }
+        
+        .footer {
+            background-color: #f5f5f5;
+            padding: 2rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-number">404</div>
+            <div class="box-icon">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <h1 class="title is-2 has-text-white">Упс! Эту вещь мы не нашли</h1>
+            <p class="subtitle has-text-white">
+                Похоже, такой страницы не существует. Может, её уже кто-то арендовал?
+            </p>
+            
+            <div class="buttons is-centered" style="margin-top: 2rem;">
+                <a href="index.html" class="button is-white is-medium">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <span>На главную</span>
+                </a>
+                <a href="contacts.html" class="button is-light is-medium">
+                    <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span>Сообщить о проблеме</span>
+                </a>
+            </div>
+            
+            <div class="suggestions">
+                <h2 class="title is-5">Может, вас заинтересует:</h2>
+                
+                <a href="catalog.html" class="suggestion-item" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="media">
+                        <div class="media-left">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-th"></i>
+                            </span>
+                        </div>
+                        <div class="media-content">
+                            <p class="has-text-weight-bold">Каталог товаров</p>
+                            <p class="is-size-7 has-text-grey">Посмотрите все доступные вещи для аренды</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="suggestion-item" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="media">
+                        <div class="media-left">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                        <div class="media-content">
+                            <p class="has-text-weight-bold">Поиск по каталогу</p>
+                            <p class="is-size-7 has-text-grey">Найдите нужную вещь в нашей базе</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="faq.html" class="suggestion-item" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="media">
+                        <div class="media-left">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                        <div class="media-content">
+                            <p class="has-text-weight-bold">Частые вопросы</p>
+                            <p class="is-size-7 has-text-grey">Ответы на популярные вопросы про аренду</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="contacts.html" class="suggestion-item" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="media">
+                        <div class="media-left">
+                            <span class="icon has-text-success">
+                                <i class="fas fa-comment"></i>
+                            </span>
+                        </div>
+                        <div class="media-content">
+                            <p class="has-text-weight-bold">Связаться с нами</p>
+                            <p class="is-size-7 has-text-grey">Напишите нам — поможем разобраться</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <p class="has-text-white" style="margin-top: 2rem; opacity: 0.8;">
+                <small>
+                    Если вы попали сюда по ссылке с нашего сайта, пожалуйста, 
+                    <a href="contacts.html" style="color: white; text-decoration: underline;">сообщите нам</a> об этом
+                </small>
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer" style="background-color: #1e293b; color: white; padding: 3rem 1.5rem 2rem;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <p class="has-text-weight-bold is-size-4 mb-3" style="color: white;">Взять.ру</p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                        Аренда вещей без головной боли
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        Москва, Каширское шоссе, 61, корп. 2<br>
+                        <span style="margin-left: 1.5rem;">ТЦ «Каширское»</span>
+                    </p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Навигация</p>
+                    <p><a href="index.html" style="color: rgba(255,255,255,0.8);">Главная</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Каталог</a></p>
+                    <p><a href="faq.html" style="color: rgba(255,255,255,0.8);">Вопросы</a></p>
+                    <p><a href="contacts.html" style="color: rgba(255,255,255,0.8);">Контакты</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Категории</p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Инструменты</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Туризм</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Техника</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Развлечения</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Соцсети</p>
+                    <div class="buttons">
+                        <a href="https://vk.com" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-vk"></i>
+                            </span>
+                        </a>
+                        <a href="https://telegram.org" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-telegram"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr style="background-color: rgba(255,255,255,0.1);">
+            
+            <div class="content has-text-centered" style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                <p>© 2026 Взять.ру — Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

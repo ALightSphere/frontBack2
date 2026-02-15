@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — Взять.ру</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 1.5rem;
+        }
+        
+        .contact-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.2s;
+        }
+        
+        .contact-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #3273dc;
+            margin-right: 1rem;
+        }
+        
+        .footer {
+            background-color: #f5f5f5;
+            padding: 2rem 1.5rem;
+        }
+        
+        .notification.is-success {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar is-white" role="navigation" aria-label="главная навигация">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon-text">
+                        <span class="icon has-text-primary">
+                            <i class="fas fa-box-open"></i>
+                        </span>
+                        <span class="has-text-weight-bold">Взять.ру</span>
+                    </span>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="меню" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="catalog.html">Каталог</a>
+                    <a class="navbar-item" href="faq.html">Вопросы</a>
+                    <a class="navbar-item is-active" href="contacts.html">Контакты</a>
+                </div>
+                
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary is-light">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <span>Найти вещь</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container has-text-centered">
+            <h1 class="title is-1 has-text-white">Свяжитесь с нами</h1>
+            <p class="subtitle has-text-white">
+                Мы на связи каждый день с 9:00 до 21:00
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <h2 class="title is-4">Как с нами связаться</h2>
+                    
+                    <div class="contact-card">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="has-text-weight-bold">Email</p>
+                                <p class="has-text-grey">support@vzyat.ru</p>
+                                <p class="is-size-7 has-text-grey">Отвечаем в течение часа</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="contact-icon">
+                                    <i class="fab fa-telegram"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="has-text-weight-bold">Telegram</p>
+                                <p class="has-text-grey">@vzyat_support</p>
+                                <p class="is-size-7 has-text-grey">Быстрее всего отвечаем тут</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="has-text-weight-bold">Адрес</p>
+                                <p class="has-text-grey">Каширское шоссе, 61, корп. 2</p>
+                                <p class="has-text-grey">ТЦ «Каширское», Москва</p>
+                                <p class="is-size-7 has-text-grey">Метро Каширская</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="media">
+                            <div class="media-left">
+                                <span class="contact-icon">
+                                    <i class="fab fa-vk"></i>
+                                </span>
+                            </div>
+                            <div class="media-content">
+                                <p class="has-text-weight-bold">ВКонтакте</p>
+                                <p class="has-text-grey">vk.com/vzyat</p>
+                                <p class="is-size-7 has-text-grey">Новости и акции</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 8px;">
+                        <h3 class="title is-5">Режим работы</h3>
+                        <p class="has-text-grey">
+                            <i class="fas fa-clock" style="margin-right: 0.5rem;"></i>
+                            Понедельник – Воскресенье: 9:00 – 21:00
+                        </p>
+                        <p class="has-text-grey is-size-7" style="margin-top: 0.75rem;">
+                            Пункт выдачи работает без выходных
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h2 class="title is-4">Напишите нам</h2>
+                    <p class="has-text-grey mb-4">
+                        Есть вопрос, предложение или просто хотите поделиться впечатлением? Заполните форму, и мы обязательно ответим
+                    </p>
+                    
+                    <div id="successMessage" class="notification is-success is-light">
+                        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+                        Спасибо за сообщение! Мы получили его и ответим в ближайшее время.
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="field">
+                            <label class="label">Ваше имя</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="text" name="name" placeholder="Как к вам обращаться?" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="email" name="email" placeholder="your@email.com" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                            <p class="help">Мы не отправляем спам, только ответ на ваше сообщение</p>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="label">Тема обращения</label>
+                            <div class="control has-icons-left">
+                                <div class="select is-fullwidth">
+                                    <select name="subject" required>
+                                        <option value="" disabled selected>Выберите тему</option>
+                                        <option value="question">У меня вопрос</option>
+                                        <option value="problem">Проблема с арендой</option>
+                                        <option value="suggestion">Предложение</option>
+                                        <option value="partnership">Сотрудничество</option>
+                                        <option value="feedback">Отзыв</option>
+                                        <option value="other">Другое</option>
+                                    </select>
+                                </div>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-tag"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="label">Сообщение</label>
+                            <div class="control">
+                                <textarea class="textarea" name="message" placeholder="Расскажите подробнее..." rows="6" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox" required>
+                                    Соглашаюсь на обработку персональных данных
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">
+                                    <span class="icon">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </span>
+                                    <span>Отправить сообщение</span>
+                                </button>
+                            </div>
+                            <div class="control">
+                                <button type="reset" class="button is-light">
+                                    Очистить
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="background-color: #1e293b; color: white; padding: 3rem 1.5rem 2rem;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <p class="has-text-weight-bold is-size-4 mb-3" style="color: white;">Взять.ру</p>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">
+                        Аренда вещей без головной боли
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        Москва, Каширское шоссе, 61, корп. 2<br>
+                        <span style="margin-left: 1.5rem;">ТЦ «Каширское»</span>
+                    </p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Навигация</p>
+                    <p><a href="index.html" style="color: rgba(255,255,255,0.8);">Главная</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Каталог</a></p>
+                    <p><a href="faq.html" style="color: rgba(255,255,255,0.8);">Вопросы</a></p>
+                    <p><a href="contacts.html" style="color: rgba(255,255,255,0.8);">Контакты</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Категории</p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Инструменты</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Туризм</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Техника</a></p>
+                    <p><a href="catalog.html" style="color: rgba(255,255,255,0.8);">Развлечения</a></p>
+                </div>
+                
+                <div class="column">
+                    <p class="has-text-weight-bold mb-3" style="color: white;">Соцсети</p>
+                    <div class="buttons">
+                        <a href="https://vk.com" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-vk"></i>
+                            </span>
+                        </a>
+                        <a href="https://telegram.org" target="_blank" class="button is-dark">
+                            <span class="icon">
+                                <i class="fab fa-telegram"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr style="background-color: rgba(255,255,255,0.1);">
+            
+            <div class="content has-text-centered" style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+                <p>© 2026 Взять.ру — Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            this.reset();
+            
+            console.log('Форма отправлена');
+        });
+    </script>
+</body>
+</html>
